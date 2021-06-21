@@ -4,12 +4,12 @@ default:
     dev:
       type: snowflake
       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      role: PUBLIC
 
       # User/password auth
       user: fokko
       password: "{{ env_var('SNOWFLAKE_PASSWORD') | as_text }}"
 
+      role: PUBLIC
       database: INTEGRATION
       warehouse: INTEGRATION
       schema: INTEGRATION

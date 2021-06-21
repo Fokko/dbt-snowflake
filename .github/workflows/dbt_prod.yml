@@ -10,19 +10,17 @@ jobs:
   dbt:
     runs-on: ubuntu-20.04
     timeout-minutes: 15
-    strategy:
-      matrix:
-        python-version: [ 3.8 ]
 
     steps:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: pwd
-        run: echo `pwd`
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
 
       - name: install deps
-        run: python -m pip install dbt datafold-sdk
+        run: pip install dbt datafold-sdk
 
       - name: run dbt
         run: dbt run --profiles-dir /home/runner/work/dbt-snowflake/dbt-snowflake/
@@ -31,7 +29,7 @@ jobs:
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
       - name: submit artifacts to datafold
-        run: |
-          datafold dbt upload --ci-config-id 1 --run-type=production --target-folder ./target/
+        run: datafold dbt upload --ci-config-id 1 --run-type=production --target-folder ./target/
         env:
+          DATAFOLD_HOST: ${{ secrets.DATAFOLD_HOST }}
           DATAFOLD_APIKEY: ${{ secrets.DATAFOLD_APIKEY }}
