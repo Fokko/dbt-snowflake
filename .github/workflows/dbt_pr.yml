@@ -2,6 +2,9 @@ name: DBT PR build
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   dbt:
