@@ -1,0 +1,16 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: ${SNOWFLAKE_ACCOUNT}
+      role: PUBLIC
+
+      # User/password auth
+      user: fokko
+      password: ${SNOWFLAKE_PASSWORD}
+
+      database: INTEGRATION
+      warehouse: INTEGRATION
+      schema: INTEGRATION
+      threads: 1
