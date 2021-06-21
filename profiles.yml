@@ -8,7 +8,7 @@ default:
 
       # User/password auth
       user: fokko
-      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') | as_text }}"
 
       database: INTEGRATION
       warehouse: INTEGRATION
