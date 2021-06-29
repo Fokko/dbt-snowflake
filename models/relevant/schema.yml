@@ -9,3 +9,8 @@ models:
         tests:
           - unique
           - not_null
+      - name: "second column"
+        description: "The second column with a space in the name"
+        tests:
+          - unique
+          - not_null
