@@ -10,7 +10,7 @@ default:
       password: "{{ env_var('SNOWFLAKE_PASSWORD') | as_text }}"
 
       role: PUBLIC
-      database: INTEGRATION
+      database: "{{ env_var('SNOWFLAKE_DATABASE') | as_text }}"
       warehouse: INTEGRATION
       schema: INTEGRATION
       threads: 1
