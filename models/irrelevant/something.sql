@@ -13,8 +13,8 @@ with source_data as (
 
     select
         1 as id,
-        2 as "second column"
-
+        2 as "second column",
+        22 / 0 as boom
 )
 
 select *
